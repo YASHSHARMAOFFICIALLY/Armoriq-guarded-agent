@@ -1,0 +1,13 @@
+export { evaluate } from './evaluate.js';
+export type { EvaluateContext } from './evaluate.js';
+export { CircuitBreaker } from './circuitBreaker.js';
+export type { CircuitBreakerOptions } from './circuitBreaker.js';
+export type { UsageSnapshot } from './types.js';
+export { toolMatches } from './match.js';
+export { checkBlock } from './rules/blockRule.js';
+export { checkApproval } from './rules/approvalRule.js';
+export { checkInputValidation } from './rules/inputValidationRule.js';
+export { checkBudget } from './rules/budgetRule.js';
+export { checkInjectionHeuristic } from './injectionHeuristic.js';
+export { judgeIntent } from './semanticGuard.js';
+export type { LlmJudge, SemanticVerdict } from './semanticGuard.js';

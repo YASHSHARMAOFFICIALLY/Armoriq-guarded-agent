@@ -1,0 +1,23 @@
+# Postgres for the audit log + policy rules. Bring up with: docker compose up -d
+# Then: cp .env.example .env  &&  npm run prisma:migrate -w packages/server
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: armoriq
+      POSTGRES_PASSWORD: armoriq
+      POSTGRES_DB: armoriq
+    ports:
+      # Host 5432 is taken by a local Postgres, so publish on 5433 to avoid the clash.
+      # DATABASE_URL in .env must use port 5433 to match.
+      - "5433:5432"
+    volumes:
+      - armoriq-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U armoriq"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  armoriq-pgdata:

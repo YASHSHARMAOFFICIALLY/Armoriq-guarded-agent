@@ -1,0 +1,15 @@
+[
+  {
+    "id": "security-ops",
+    "name": "Security Ops",
+    "transport": "stdio",
+    "command": "node",
+    "args": ["packages/mcp-servers/security-ops/dist/index.js"]
+  },
+  {
+    "id": "context7",
+    "name": "Context7 (remote docs)",
+    "transport": "http",
+    "url": "https://mcp.context7.com/mcp"
+  }
+]

@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// One entry in the tamper-evident audit chain. Mirrors @armoriq/audit's AuditEntryRow exactly.
+// timestamp is stored as the raw ISO String (NOT DateTime): the hash commits to this exact string,
+// so any serialization drift from a DateTime round-trip would break verifyChain.
+model AuditEntry {
+  id             String  @id
+  sequence       Int     @unique
+  timestamp      String
+  eventType      String
+  payload        Json
+  prevHash       String
+  hash           String
+  conversationId String?
+
+  @@index([conversationId])
+}
+
+// A policy rule (shared/Rule). config is the per-type discriminated config object, stored as Json
+// and validated with RuleSchema on load.
+model Rule {
+  id        String  @id
+  type      String
+  toolName  String
+  enabled   Boolean
+  createdAt String
+  config    Json
+}

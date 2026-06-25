@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": { "@armoriq/*": ["../*/src"] }
+  },
+  "include": ["src", "tests"]
+}

@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+policy-key.json
+
+# Prisma generated client
+**/generated/
+.prisma/
+
+# Next.js
+.next/
+out/
+
+# Personal / internal — never publish
+SUBMISSION.md
+docs/
+
+# AI-assistant config (kept local, out of the repo)
+CLAUDE.md
+AGENTS.md
